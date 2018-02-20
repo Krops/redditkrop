@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New post</title>
+</head>
+<body>
+<h1>New post</h1>
+<form method="POST" action="{% url 'posts:create' %}">
+    {% csrf_token %}
+    Title:
+    <br/>
+    <input type="text" name="title"/>
+    <br/>
+    URL:
+    <br>
+    <input type="text" name="url"/>
+    <br/>
+    {% if error %}
+    {{error}} <br>
+    {% endif %}
+    <input type="submit" name="Post!">
+</form>
+</body>
+</html>

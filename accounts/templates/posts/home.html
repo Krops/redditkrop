@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Posts</title>
+</head>
+<body>
+<h1>Posts</h1>
+<a href="{% url 'posts:create' %}">New post</a>
+<br>
+<br>
+{% for post in posts.all %}
+<a>UP</a>{{post.votes_total}} <a>DOWN</a> <a href="{{ post.url }}">{{ post.title }}</a>
+<br>
+{{ post.pub_date }} by {{ post.author }}
+<br>
+{% endfor %}
+</body>
+</html>
