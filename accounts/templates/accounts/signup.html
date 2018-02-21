@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
+{% block content %}
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -23,7 +23,8 @@
     {% if error %}
     {{error}} <br>
     {% endif %}
-    <input type="submit" name="SignUp!">
+    <br>
+    <input class="btn btn-primary" type="submit" name="SignUp!">
 </form>
 </body>
-</html>
+{% endblock %}

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.db import IntegrityError
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 
 def signup(request):
@@ -25,10 +25,14 @@ def signin(request):
         if user is not None:
             login(request, user)
             if 'next' in request.POST:
-                if request.POST['next'] is not None:
-                    return redirect(request.POST['next'])
-            return render(request, 'accounts/login.html')
+                return redirect(request.POST['next'])
+            return redirect('home')
         else:
             return render(request, 'accounts/login.html', {'error': 'Passwords or user didn\'t match'})
     else:
         return render(request, 'accounts/login.html')
+
+def logout_view(request):
+    if request.method == 'POST':
+        logout(request)
+        return redirect('home')

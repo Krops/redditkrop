@@ -24,7 +24,7 @@ def create(request):
         return render(request, 'posts/create.html')
 
 def home(request):
-    posts = Post.objects.order_by('pub_date')
+    posts = Post.objects.order_by('-pub_date')
     return render(request, 'posts/home.html', {'posts':posts})
 
 def upvote(request, pk):
